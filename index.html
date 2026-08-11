@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <style>
+        /* ===== 1. CSS SELECTORS & RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ===== 2. BOX MODEL DEMONSTRATION ===== */
+        .box-model-demo {
+            background: #e9ecef;
+            padding: 30px;
+            margin: 20px 0;
+            border: 4px solid #6c757d;
+            border-radius: 12px;
+            outline: 2px dashed #adb5bd;
+            outline-offset: 8px;
+        }
+
+        .box-model-demo h3 {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .box-model-demo p {
+            padding: 15px;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        /* ===== LAYOUT CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 4px solid #f39c12;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f39c12;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        /* ===== 3. FLEXBOX DEMONSTRATION ===== */
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 16px;
+            margin: 30px 0;
+            min-height: 350px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        /* ===== PROFILE IMAGE ===== */
+        .hero-image img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== 4. CSS GRID DEMONSTRATION ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #3498db;
+            box-shadow: 0 12px 30px rgba(52, 152, 219, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 200px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .project-info p {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #495057;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        section {
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f39c12;
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        /* ===== 5. TABLET RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ===== 6. MOBILE RESPONSIVE DESIGN ===== */
+        @media (max-width: 767px) {
+
+            /* Navigation */
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px;
+                background: rgba(255, 255, 255, 0.1);
+                text-align: center;
+                border-radius: 8px;
+            }
+
+            /* Hero Section */
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+                gap: 25px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-image img {
+                width: 180px;
+                height: 180px;
+            }
+
+            /* Grids */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            /* Typography */
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            /* Box Model */
+            .box-model-demo {
+                padding: 20px;
+                margin: 15px 0;
+            }
+
+            .box-model-demo p {
+                padding: 12px;
+            }
+
+            /* Container */
+            .container {
+                padding: 15px;
+            }
+
+            /* Buttons */
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ===== SMALL MOBILE ===== */
+        @media (max-width: 480px) {
+
+            .hero {
+                padding: 30px 15px;
+            }
+
+            .hero-image img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skill-card {
+                padding: 20px 15px;
+            }
+
+            .project-img {
+                height: 160px;
+                font-size: 1rem;
+            }
+
+            .project-info {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-content">
+
+            <div class="logo">
+                Meghana<span>Portfolio</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero" id="about">
+
+            <div class="hero-text">
+                <h1>Hi, I'm Meghana</h1>
+
+                <p>
+                    A passionate Computer Science Engineering student and
+                    aspiring Web Developer interested in building responsive
+                    and user-friendly web applications.
+                </p>
+
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+
+            <div class="hero-image">
+                <img src="image/megha.jpeg" alt="Meghana">
+            </div>
+
+        </section>
+
+        <!-- ===== SKILLS SECTION ===== -->
+        <section id="skills">
+
+            <h2 class="section-title">My Skills</h2>
+
+            <p class="section-subtitle">
+                Technologies and tools I am learning and working with.
+            </p>
+
+            <div class="skills-grid">
+
+                <!-- HTML & CSS -->
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML & CSS</h3>
+                    <p>
+                        Building structured, semantic web pages and creating
+                        responsive and attractive web designs.
+                    </p>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>
+                        Currently learning JavaScript fundamentals,
+                        DOM manipulation, and event handling.
+                    </p>
+                </div>
+
+                <!-- Java -->
+                <div class="skill-card">
+                    <div class="skill-icon">☕</div>
+                    <h3>Java</h3>
+                    <p>
+                        Core Java, Object-Oriented Programming,
+                        Collections, and Exception Handling.
+                    </p>
+                </div>
+
+                <!-- MySQL -->
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>MySQL</h3>
+                    <p>
+                        SQL, database management, CRUD operations,
+                        and database connectivity.
+                    </p>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>Tools & Workflow</h3>
+                    <p>
+                        Git, GitHub, and VS Code with basic version
+                        control and project management.
+                    </p>
+                </div>
+
+                <!-- Python -->
+                <div class="skill-card">
+                    <div class="skill-icon">🐍</div>
+                    <h3>Python</h3>
+                    <p>
+                        Python fundamentals, data structures, functions,
+                        and basic application development.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects">
+
+            <h2 class="section-title">Featured Projects</h2>
+
+            <p class="section-subtitle">
+                Some of my recent work.
+            </p>
+
+            <div class="projects-grid">
+
+                <!-- E-Commerce -->
+                <div class="project-card">
+
+                    <div class="project-img">
+                        E-Commerce App
+                    </div>
+
+                    <div class="project-info">
+
+                        <h3>ShopHub</h3>
+
+                        <p>
+                            A responsive e-commerce website for browsing
+                            products and managing a shopping cart using
+                            HTML, CSS, and JavaScript.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Cattle Health Monitoring -->
+                <div class="project-card">
+
+                    <div class="project-img">
+                        Cattle Health Monitoring
+                    </div>
+
+                    <div class="project-info">
+
+                        <h3>Cattle Health Monitoring</h3>
+
+                        <p>
+                            A machine learning application that predicts
+                            cattle health using physiological parameters
+                            and provides model explanations using SHAP
+                            and LIME.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">SHAP & LIME</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Smart Expense Tracker -->
+                <div class="project-card">
+
+                    <div class="project-img">
+                        Smart Expense Tracker
+                    </div>
+
+                    <div class="project-info">
+
+                        <h3>Smart Expense Tracker</h3>
+
+                        <p>
+                            A Java-based expense management application
+                            for tracking income, expenses, and
+                            category-wise spending using MySQL.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">JDBC</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Personal Portfolio -->
+                <div class="project-card">
+
+                    <div class="project-img">
+                        Portfolio Site
+                    </div>
+
+                    <div class="project-info">
+
+                        <h3>Personal Portfolio</h3>
+
+                        <p>
+                            A responsive portfolio website showcasing
+                            my skills, projects, certifications,
+                            and contact information.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section
+            id="contact"
+            style="
+                text-align: center;
+                padding: 40px 20px;
+                background: #e9ecef;
+                border-radius: 12px;
+                margin-bottom: 30px;
+            "
+        >
+
+            <h2 class="section-title">
+                Get In Touch
+            </h2>
+
+            <p style="margin: 20px 0; color: #555;">
+                Have a project in mind? Let's work together!
+            </p>
+
+            <a
+                href="mailto:pareddysruthi46@gmail.com"
+                class="btn"
+            >
+                Contact Me
+            </a>
+
+        </section>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 MeghanaPortfolio. All rights reserved.
+            </p>
+
+            
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
+
